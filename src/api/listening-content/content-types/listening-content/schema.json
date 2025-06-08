@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listening_contents",
+  "info": {
+    "singularName": "listening-content",
+    "pluralName": "listening-contents",
+    "displayName": "Listening Content",
+    "description": "Listening exercises and audio content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "required": true
+    },
+    "examType": {
+      "type": "enumeration",
+      "enum": [
+        "CELPIP",
+        "TEF",
+        "GENERAL_ENGLISH"
+      ],
+      "required": true
+    },
+    "audioFile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "audios"
+      ]
+    },
+    "transcript": {
+      "type": "richtext",
+      "required": true
+    },
+    "questions": {
+      "type": "json",
+      "required": true
+    },
+    "contentTags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "listeningContents"
+    }
+  }
+} 

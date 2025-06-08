@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reading_contents",
+  "info": {
+    "singularName": "reading-content",
+    "pluralName": "reading-contents",
+    "displayName": "Reading Content",
+    "description": "Reading exercises and content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "required": true
+    },
+    "examType": {
+      "type": "enumeration",
+      "enum": [
+        "CELPIP",
+        "TEF",
+        "GENERAL_ENGLISH"
+      ],
+      "required": true
+    },
+    "questions": {
+      "type": "json"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "contentTags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "readingContents"
+    }
+  }
+} 

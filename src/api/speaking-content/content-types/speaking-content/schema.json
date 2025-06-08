@@ -1,0 +1,97 @@
+{
+  "kind": "collectionType",
+  "collectionName": "speaking_contents",
+  "info": {
+    "singularName": "speaking-content",
+    "pluralName": "speaking-contents",
+    "displayName": "Speaking Content",
+    "description": "Speaking exercises and prompts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "required": true
+    },
+    "examType": {
+      "type": "enumeration",
+      "enum": [
+        "CELPIP",
+        "TEF",
+        "GENERAL_ENGLISH"
+      ],
+      "required": true
+    },
+    "speakingType": {
+      "type": "enumeration",
+      "enum": [
+        "PRESENTATION",
+        "INTERVIEW",
+        "CONVERSATION",
+        "DEBATE",
+        "STORYTELLING",
+        "OPINION"
+      ],
+      "required": true
+    },
+    "prompt": {
+      "type": "richtext",
+      "required": true
+    },
+    "timeLimit": {
+      "type": "integer",
+      "required": true
+    },
+    "preparationTime": {
+      "type": "integer",
+      "required": true
+    },
+    "exampleResponse": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "audios"
+      ]
+    },
+    "evaluationCriteria": {
+      "type": "json",
+      "required": true
+    },
+    "supportingMaterials": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "contentTags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "speakingContents"
+    }
+  }
+} 

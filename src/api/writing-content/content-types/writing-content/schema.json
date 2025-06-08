@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "writing_contents",
+  "info": {
+    "singularName": "writing-content",
+    "pluralName": "writing-contents",
+    "displayName": "Writing Content",
+    "description": "Writing exercises and prompts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "required": true
+    },
+    "examType": {
+      "type": "enumeration",
+      "enum": [
+        "CELPIP",
+        "TEF",
+        "GENERAL_ENGLISH"
+      ],
+      "required": true
+    },
+    "writingType": {
+      "type": "enumeration",
+      "enum": [
+        "ESSAY",
+        "EMAIL",
+        "LETTER",
+        "REPORT",
+        "STORY",
+        "OPINION"
+      ],
+      "required": true
+    },
+    "prompt": {
+      "type": "richtext",
+      "required": true
+    },
+    "wordLimit": {
+      "type": "integer",
+      "required": true
+    },
+    "timeLimit": {
+      "type": "integer",
+      "required": true
+    },
+    "exampleResponse": {
+      "type": "richtext"
+    },
+    "evaluationCriteria": {
+      "type": "json",
+      "required": true
+    },
+    "supportingMaterials": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "contentTags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "writingContents"
+    }
+  }
+} 
