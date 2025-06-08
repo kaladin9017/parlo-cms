@@ -4,4 +4,11 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
+  webhooks: {
+    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+  },
+  ssl: {
+    enabled: env.bool('SSL_ENABLED', true),
+    rejectUnauthorized: env.bool('SSL_REJECT_UNAUTHORIZED', true),
+  },
 });

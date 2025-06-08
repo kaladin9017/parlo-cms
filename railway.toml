@@ -11,5 +11,4 @@ restartPolicyMaxRetries = 10
 
 [env]
 NODE_ENV = "production"
-NODE_VERSION = "20.11.1"
-NODE_TLS_REJECT_UNAUTHORIZED = "0" 
+NODE_VERSION = "20.11.1" 
