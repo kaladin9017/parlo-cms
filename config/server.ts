@@ -8,7 +8,7 @@ export default ({ env }) => ({
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
   ssl: {
-    enabled: env.bool('SSL_ENABLED', true),
-    rejectUnauthorized: env.bool('SSL_REJECT_UNAUTHORIZED', true),
+    enabled: env.bool('SSL_ENABLED', false),
+    rejectUnauthorized: env.bool('SSL_REJECT_UNAUTHORIZED', false),
   },
 });
