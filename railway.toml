@@ -3,7 +3,7 @@ builder = "nixpacks"
 buildCommand = "npm install && npm run build"
 
 [deploy]
-startCommand = "npm start"
+startCommand = "NODE_TLS_REJECT_UNAUTHORIZED=0 npm start"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
 restartPolicy = "on-failure"
