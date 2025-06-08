@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "yarn build"
+buildCommand = "npm install -g yarn && yarn install && yarn build"
 
 [deploy]
 startCommand = "yarn start"
@@ -10,4 +10,5 @@ restartPolicy = "on-failure"
 restartPolicyMaxRetries = 10
 
 [env]
-NODE_ENV = "production" 
+NODE_ENV = "production"
+NODE_VERSION = "20.11.1" 
