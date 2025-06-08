@@ -7,8 +7,9 @@ export default ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
+  proxy: true,
+  url: env('PUBLIC_URL', 'https://parlo-cms-production.up.railway.app'),
   ssl: {
-    enabled: env.bool('SSL_ENABLED', false),
-    rejectUnauthorized: env.bool('SSL_REJECT_UNAUTHORIZED', false),
+    enabled: false,
   },
 });
