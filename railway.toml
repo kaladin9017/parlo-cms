@@ -3,7 +3,7 @@ builder = "nixpacks"
 buildCommand = "npm install && npm run build"
 
 [deploy]
-startCommand = "NODE_TLS_REJECT_UNAUTHORIZED=0 npm start"
+startCommand = "npm start"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 300
 restartPolicy = "on-failure"
@@ -11,4 +11,5 @@ restartPolicyMaxRetries = 10
 
 [env]
 NODE_ENV = "production"
-NODE_VERSION = "20.11.1" 
+NODE_VERSION = "20.11.1"
+PUBLIC_URL = "https://parlo-cms-production.up.railway.app" 

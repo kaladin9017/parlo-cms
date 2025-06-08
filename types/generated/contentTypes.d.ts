@@ -491,16 +491,36 @@ export interface ApiReadingContentReadingContent
     draftAndPublish: true;
   };
   attributes: {
+    assessmentCriteria: Schema.Attribute.JSON & Schema.Attribute.Required;
     content: Schema.Attribute.RichText & Schema.Attribute.Required;
     contentTags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
+    contentType: Schema.Attribute.Enumeration<
+      ['LESSON', 'PRACTICE', 'ASSESSMENT']
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    examType: Schema.Attribute.Enumeration<
-      ['CELPIP', 'TEF', 'GENERAL_ENGLISH']
-    > &
+    day: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 7;
+          min: 1;
+        },
+        number
+      >;
+    estimatedTime: Schema.Attribute.Integer & Schema.Attribute.Required;
+    examType: Schema.Attribute.Enumeration<['CELPIP', 'TEF']> &
       Schema.Attribute.Required;
     excerpt: Schema.Attribute.Text;
+    language: Schema.Attribute.Enumeration<['ENGLISH', 'FRENCH']> &
+      Schema.Attribute.Required;
+    learningObjectives: Schema.Attribute.JSON & Schema.Attribute.Required;
+    learningPath: Schema.Attribute.Enumeration<
+      ['THREE_MONTH', 'SIX_MONTH', 'TEN_MONTH']
+    > &
+      Schema.Attribute.Required;
     level: Schema.Attribute.Enumeration<['A1', 'A2', 'B1', 'B2', 'C1', 'C2']> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -516,6 +536,15 @@ export interface ApiReadingContentReadingContent
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    week: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 52;
+          min: 1;
+        },
+        number
+      >;
   };
 }
 
@@ -589,10 +618,31 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    contentCategory: Schema.Attribute.Enumeration<
+      [
+        'GRAMMAR',
+        'VOCABULARY',
+        'PRONUNCIATION',
+        'CULTURE',
+        'EXAM_PREP',
+        'DAILY_LIFE',
+        'BUSINESS',
+        'ACADEMIC',
+      ]
+    > &
+      Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    examType: Schema.Attribute.Enumeration<['CELPIP', 'TEF']> &
+      Schema.Attribute.Required;
+    language: Schema.Attribute.Enumeration<['ENGLISH', 'FRENCH']> &
+      Schema.Attribute.Required;
+    learningPath: Schema.Attribute.Enumeration<
+      ['THREE_MONTH', 'SIX_MONTH', 'TEN_MONTH']
+    > &
+      Schema.Attribute.Required;
     listeningContents: Schema.Attribute.Relation<
       'manyToMany',
       'api::listening-content.listening-content'
