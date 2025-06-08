@@ -410,6 +410,33 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiHealthHealth extends Struct.SingleTypeSchema {
+  collectionName: 'health';
+  info: {
+    displayName: 'Health';
+    pluralName: 'healths';
+    singularName: 'health';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::health.health'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiListeningContentListeningContent
   extends Struct.CollectionTypeSchema {
   collectionName: 'listening_contents';
@@ -1157,6 +1184,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::health.health': ApiHealthHealth;
       'api::listening-content.listening-content': ApiListeningContentListeningContent;
       'api::reading-content.reading-content': ApiReadingContentReadingContent;
       'api::speaking-content.speaking-content': ApiSpeakingContentSpeakingContent;

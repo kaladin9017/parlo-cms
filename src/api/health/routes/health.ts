@@ -2,8 +2,8 @@ export default {
   routes: [
     {
       method: 'GET',
-      path: '/_health',
-      handler: 'health.check',
+      path: '/health',
+      handler: 'health.health',
       config: {
         auth: false,
       },
